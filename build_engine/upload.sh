@@ -95,11 +95,11 @@ GH_RELEASE=https://github.com/shorebirdtech/updater/releases/download/patch-v$PA
 cd $TMP_DIR
 curl -L $GH_RELEASE/patch-x86_64-apple-darwin.zip -o patch-x86_64-apple-darwin.zip
 curl -L $GH_RELEASE/patch-x86_64-pc-windows-msvc.zip -o patch-x86_64-pc-windows-msvc.zip
-curl -L $GH_RELEASE/patch-x86_64-unknown-linux-gnu.zip -o patch-x86_64-unknown-linux-gnu.zip
+curl -L $GH_RELEASE/patch-x86_64-unknown-linux-musl.zip -o patch-x86_64-unknown-linux-musl.zip
 
 gsutil cp patch-x86_64-apple-darwin.zip $SHOREBIRD_ROOT/patch-darwin-x64.zip
 gsutil cp patch-x86_64-pc-windows-msvc.zip $SHOREBIRD_ROOT/patch-windows-x64.zip
-gsutil cp patch-x86_64-unknown-linux-gnu.zip $SHOREBIRD_ROOT/patch-linux-x64.zip
+gsutil cp patch-x86_64-unknown-linux-musl.zip $SHOREBIRD_ROOT/patch-linux-x64.zip
 
 gsutil cp $MANIFEST_FILE $SHOREBIRD_ROOT/artifacts_manifest.yaml
 
