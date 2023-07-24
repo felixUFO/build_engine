@@ -12,6 +12,10 @@ SCRIPT_DIR=$(cd $(dirname $0) && pwd)
 
 echo "Building engine at $ENGINE_ROOT and uploading to gs://download.shorebird.dev"
 
+cd $ENGINE_ROOT/src/third_party/dart
+git fetch
+git fetch --tags upstream
+
 # First update our checkouts to the correct versions.
 # gclient sync -r src/flutter@${ENGINE_HASH}
 # doesn't seem to work, it seems to get stuck trying to
@@ -19,6 +23,7 @@ echo "Building engine at $ENGINE_ROOT and uploading to gs://download.shorebird.d
 # Similar to https://bugs.chromium.org/p/chromium/issues/detail?id=584742
 cd $ENGINE_ROOT/src/flutter
 git fetch
+git fetch --tags upstream
 git checkout $ENGINE_HASH
 
 cd $ENGINE_ROOT
