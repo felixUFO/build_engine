@@ -38,14 +38,14 @@ check_out_depot_tools() {
 check_out_build_engine() {
     cd $CHECKOUT_ROOT
     if [[ ! -d "build_engine" ]]; then
-        git clone git@github.com:shorebirdtech/build_engine.git
+        git clone https://github.com/shorebirdtech/build_engine.git
     fi
 }
 
 check_out_flutter_fork() {
     cd $CHECKOUT_ROOT
     if [[ ! -d "flutter" ]]; then
-        git clone git@github.com:shorebirdtech/flutter.git
+        git clone https://github.com/shorebirdtech/flutter.git
     fi
     cd flutter
     if [[ ! $(git config --get remote.upstream.url) ]]; then
