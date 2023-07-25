@@ -24,19 +24,19 @@ INFRA_ROOT="gs://$STORAGE_BUCKET/flutter_infra_release/flutter/$ENGINE_HASH"
 
 # Android Arm64 release gen_snapshot
 ARCH_OUT=$ENGINE_OUT/android_release_arm64
-ZIPS_OUT=$ARCH_OUT/zip_archives/android-arm64-release
+ZIPS_OUT=$ARCH_OUT/zip_archives/android-arm64-release/$HOST_ARCH-release/
 ZIPS_DEST=$INFRA_ROOT/android-arm64-release
 gsutil cp $ZIPS_OUT/$HOST_ARCH.zip $ZIPS_DEST/$HOST_ARCH.zip
 
 # Android Arm32 release gen_snapshot
 ARCH_OUT=$ENGINE_OUT/android_release
-ZIPS_OUT=$ARCH_OUT/zip_archives/android-arm-release
+ZIPS_OUT=$ARCH_OUT/zip_archives/android-arm-release/$HOST_ARCH-release/
 ZIPS_DEST=$INFRA_ROOT/android-arm-release
 gsutil cp $ZIPS_OUT/$HOST_ARCH.zip $ZIPS_DEST/$HOST_ARCH.zip
 
 # Android x64 release gen_snapshot
 ARCH_OUT=$ENGINE_OUT/android_release_x64
-ZIPS_OUT=$ARCH_OUT/zip_archives/android-x64-release
+ZIPS_OUT=$ARCH_OUT/zip_archives/android-x64-release/$HOST_ARCH-release/
 ZIPS_DEST=$INFRA_ROOT/android-x64-release
 gsutil cp $ZIPS_OUT/$HOST_ARCH.zip $ZIPS_DEST/$HOST_ARCH.zip
 
