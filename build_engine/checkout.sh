@@ -69,7 +69,7 @@ check_out_engine() {
         git remote add upstream https://github.com/flutter/engine
     fi
     git fetch upstream
-    git checkout shorebird/main
+    git checkout shorebird/dev
 
     cd $CHECKOUT_ROOT/engine
     gclient sync
