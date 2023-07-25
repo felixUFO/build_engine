@@ -16,7 +16,6 @@
 #
 # This will check out all necessary repos into the ~/.engine_checkout directory.
 
-
 CHECKOUT_ROOT=$(realpath $1)
 
 if [ -z "$CHECKOUT_ROOT" ]; then
@@ -33,6 +32,7 @@ check_out_depot_tools() {
     if [[ ! -d "depot_tools" ]]; then
         git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
     fi
+    export PATH="$PATH:$CHECKOUT_ROOT/depot_tools"
 }
 
 check_out_build_engine() {
@@ -61,8 +61,8 @@ check_out_engine() {
     fi
 
     cd engine
-    curl https://raw.githubusercontent.com/shorebirdtech/build_engine/main/build_engine/dot_gclient > .gclient
-    ../depot_tools/gclient sync
+    curl https://raw.githubusercontent.com/shorebirdtech/build_engine/main/build_engine/dot_gclient >.gclient
+    gclient sync
 
     cd src/flutter
     if [[ ! $(git config --get remote.upstream.url) ]]; then
@@ -72,7 +72,7 @@ check_out_engine() {
     git checkout shorebird/main
 
     cd $CHECKOUT_ROOT/engine
-    ../depot_tools/gclient sync
+    gclient sync
 }
 
 check_out_depot_tools
