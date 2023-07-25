@@ -19,6 +19,10 @@ jobs:
       - name: 📚 Git Checkout
         uses: actions/checkout@v3
 
+      - name: Install packages
+        run: ./build_engine/linux_setup.sh
+        shell: bash
+
       - id: auth
         name: Authenticate to Google Cloud
         uses: google-github-actions/auth@v1
@@ -30,5 +34,5 @@ jobs:
         shell: bash
 
       - name: 🏗️ Build & Upload Engine
-        run: ./build_engine/build_and_upload.sh ~/.engine_checkout ${{ inputs.engine_revision }}
+        run: ./build_engine/linux_build_and_upload.sh ~/.engine_checkout ${{ inputs.engine_revision }}
         shell: bash
