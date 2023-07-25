@@ -49,7 +49,7 @@ check_out_flutter_fork() {
     fi
     cd flutter
     if [[ ! $(git config --get remote.upstream.url) ]]; then
-        git remote add upstream https://github.com/flutter/flutter
+        git remote add upstream https://github.com/flutter/flutter.git
     fi
     git fetch upstream
 }
@@ -66,7 +66,7 @@ check_out_engine() {
 
     cd src/flutter
     if [[ ! $(git config --get remote.upstream.url) ]]; then
-        git remote add upstream https://github.com/flutter/engine
+        git remote add upstream https://github.com/flutter/engine.git
     fi
     git fetch upstream
     git checkout shorebird/dev
