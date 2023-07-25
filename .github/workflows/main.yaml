@@ -1,0 +1,22 @@
+name: Build & Upload Engine
+
+on:
+  workflow_dispatch:
+    inputs:
+      engine_revision:
+        description: "The Engine revision to build and upload"
+        required: true
+
+jobs:
+  build_and_upload:
+    runs-on: self-hosted
+
+    steps:
+      - name: 📚 Git Checkout
+        uses: actions/checkout@v3
+
+      - name: Checkout Engine
+        run: ./checkout.sh ~/.engine_checkout
+
+      - name: 🏗️ Build & Upload Engine
+        run: ./build_and_upload.sh ~/.engine_checkout ${{ inputs.engine_revision }}
