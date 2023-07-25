@@ -22,8 +22,8 @@ HOST_ARCH='windows-x64'
 
 INFRA_ROOT="gs://$STORAGE_BUCKET/flutter_infra_release/flutter/$ENGINE_HASH"
 
-# TODO(eseidel): Terrible hack to make it work locally.
-GSUTIL="C:\Users\micro\AppData\Local\cloud-code\installer\google-cloud-sdk\bin\gsutil.cmd"
+# TODO(eseidel): Hack for eseidel's machine.
+export PATH="$PATH:/c/Users/micro/AppData/Local/cloud-code/installer/google-cloud-sdk/bin"
 
 # Android Arm64 release gen_snapshot
 # ARCH_OUT=$ENGINE_OUT/android_release_arm64
@@ -35,13 +35,13 @@ GSUTIL="C:\Users\micro\AppData\Local\cloud-code\installer\google-cloud-sdk\bin\g
 ARCH_OUT=$ENGINE_OUT/android_release
 ZIPS_OUT=$ARCH_OUT/zip_archives/android-arm-release
 ZIPS_DEST=$INFRA_ROOT/android-arm-release
-$GSUTIL cp $ZIPS_OUT/$HOST_ARCH.zip $ZIPS_DEST/$HOST_ARCH.zip
+gsutil cp $ZIPS_OUT/$HOST_ARCH.zip $ZIPS_DEST/$HOST_ARCH.zip
 
 # Android x64 release gen_snapshot
 ARCH_OUT=$ENGINE_OUT/android_release_x64
 ZIPS_OUT=$ARCH_OUT/zip_archives/android-x64-release
 ZIPS_DEST=$INFRA_ROOT/android-x64-release
-$GSUTIL cp $ZIPS_OUT/$HOST_ARCH.zip $ZIPS_DEST/$HOST_ARCH.zip
+gsutil cp $ZIPS_OUT/$HOST_ARCH.zip $ZIPS_DEST/$HOST_ARCH.zip
 
 # We could upload patch if we built it here.
 # gsutil cp $ENGINE_OUT/host_release/patch.zip $SHOREBIRD_ROOT/patch-win-x64.zip
