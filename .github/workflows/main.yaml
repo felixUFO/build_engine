@@ -35,5 +35,5 @@ jobs:
         shell: bash
 
       - name: 🏗️ Build & Upload Engine
-        run: ./build_engine/linux_build_and_upload.sh ~/.engine_checkout ${{ inputs.engine_revision }}
+        run: ./build_engine/linux_build_and_upload.sh ~/.engine_checkout/engine ${{ inputs.engine_revision }}
         shell: bash
