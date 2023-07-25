@@ -17,7 +17,7 @@ cd $ENGINE_SRC
 
 # Linux doesn't seem to use "archive_gen_snapshot" as a target name yet.
 # https://github.com/flutter/flutter/issues/105351#issuecomment-1650686247
-TARGETS="default clang_x64/gen_snapshot flutter/shell/platform/android:embedding_jars flutter/shell/platform/android:abi_jars"
+TARGETS="clang_x64/gen_snapshot"
 
 # Android arm64 release
 ./flutter/tools/gn --android --android-cpu=arm64 --runtime-mode=release --no-goma
