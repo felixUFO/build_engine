@@ -1,7 +1,15 @@
 #!/bin/sh -e
 
 # Usage:
-# ./build_and_upload.sh engine_path engine_hash
+# ./win_build_and_upload.sh engine_path engine_hash
+
+# Example:
+# ./build_engine/build_engine/win_build_and_upload.sh \
+#  $HOME/Documents/GitHub/engine \
+# c906e2c58ff7cd8f57f5207c109559d1a9f1ce04
+
+# Currently written in shell for expediency, eventually should be
+# Dart or PowerShell.
 
 # The path to the Flutter engine.
 ENGINE_ROOT=$1
@@ -18,7 +26,7 @@ cd $SCRIPT_DIR
 ./update.sh $ENGINE_ROOT $ENGINE_HASH
 
 # Then run the build (this should just be a ninja call).
-./build.sh $ENGINE_ROOT
+./win_build.sh $ENGINE_ROOT
 
 # Copy Shorebird engine artifacts to Google Cloud Storage.
-./upload.sh $ENGINE_ROOT $ENGINE_HASH
+./win_upload.sh $ENGINE_ROOT $ENGINE_HASH
