@@ -9,11 +9,21 @@ on:
 
 jobs:
   build_and_upload:
+    permissions:
+      contents: "read"
+      id-token: "write"
+
     runs-on: self-hosted
 
     steps:
       - name: 📚 Git Checkout
         uses: actions/checkout@v3
+
+      - id: auth
+        name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v1
+        with:
+          credentials_json: ${{ secrets.GCP_SA }}
 
       - name: Checkout Engine
         run: ./build_engine/checkout.sh ~/.engine_checkout
