@@ -31,6 +31,8 @@ cd $ENGINE_ROOT/../_shorebird
 # Only need the libflutter.so (and flutter.jar) artifacts
 # Artifact list: https://github.com/shorebirdtech/shorebird/blob/main/packages/artifact_proxy/lib/config.dart
 
+HOST_ARCH='darwin-x64'
+
 INFRA_ROOT="gs://$STORAGE_BUCKET/flutter_infra_release/flutter/$ENGINE_HASH"
 MAVEN_VER="1.0.0-$ENGINE_HASH"
 MAVEN_ROOT="gs://$STORAGE_BUCKET/download.flutter.io/io/flutter"
@@ -40,6 +42,7 @@ ARCH_OUT=$ENGINE_OUT/android_release_arm64
 ZIPS_OUT=$ARCH_OUT/zip_archives/android-arm64-release
 ZIPS_DEST=$INFRA_ROOT/android-arm64-release
 gsutil cp $ZIPS_OUT/artifacts.zip $ZIPS_DEST/artifacts.zip
+gsutil cp $ZIPS_OUT/$HOST_ARCH.zip $ZIPS_DEST/$HOST_ARCH.zip
 gsutil cp $ZIPS_OUT/symbols.zip $ZIPS_DEST/symbols.zip
 # Android Arm64 release Maven artifacts
 ARCH_PATH=$ARCH_OUT/arm64_v8a_release
@@ -53,6 +56,7 @@ ARCH_OUT=$ENGINE_OUT/android_release
 ZIPS_OUT=$ARCH_OUT/zip_archives/android-arm-release
 ZIPS_DEST=$INFRA_ROOT/android-arm-release
 gsutil cp $ZIPS_OUT/artifacts.zip $ZIPS_DEST/artifacts.zip
+gsutil cp $ZIPS_OUT/$HOST_ARCH.zip $ZIPS_DEST/$HOST_ARCH.zip
 gsutil cp $ZIPS_OUT/symbols.zip $ZIPS_DEST/symbols.zip
 # Android Arm32 release Maven artifacts
 ARCH_PATH=$ARCH_OUT/armeabi_v7a_release
@@ -76,6 +80,7 @@ ARCH_OUT=$ENGINE_OUT/android_release_x64
 ZIPS_OUT=$ARCH_OUT/zip_archives/android-x64-release
 ZIPS_DEST=$INFRA_ROOT/android-x64-release
 gsutil cp $ZIPS_OUT/artifacts.zip $ZIPS_DEST/artifacts.zip
+gsutil cp $ZIPS_OUT/$HOST_ARCH.zip $ZIPS_DEST/$HOST_ARCH.zip
 gsutil cp $ZIPS_OUT/symbols.zip $ZIPS_DEST/symbols.zip
 # Android x64 release Maven artifacts
 ARCH_PATH=$ARCH_OUT/x86_64_release
