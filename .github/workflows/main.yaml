@@ -19,9 +19,10 @@ jobs:
       - name: 📚 Git Checkout
         uses: actions/checkout@v3
 
-      - name: Install packages
-        run: ./build_engine/linux_setup.sh
-        shell: bash
+      # Runner doesn't have permissions to sudo.
+      # - name: Install packages
+      #   run: ./build_engine/linux_setup.sh
+      #   shell: bash
 
       - id: auth
         name: Authenticate to Google Cloud
