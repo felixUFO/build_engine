@@ -6,6 +6,10 @@ solutions = [
     "custom_deps": {},
     "deps_file": "DEPS",
     "safesync_url": "",
+    # Dart expects release_candidate set when building off of stable branches.
+    # https://discord.com/channels/608014603317936148/608021010377080866/1133394478565167205
+    "custom_vars": {
+      "release_candidate": True,
+    },
   },
 ]
-
