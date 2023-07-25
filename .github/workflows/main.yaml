@@ -17,6 +17,8 @@ jobs:
 
       - name: Checkout Engine
         run: ./build_engine/checkout.sh ~/.engine_checkout
+        shell: bash
 
       - name: 🏗️ Build & Upload Engine
         run: ./build_engine/build_and_upload.sh ~/.engine_checkout ${{ inputs.engine_revision }}
+        shell: bash

@@ -1,4 +1,4 @@
-#!/bin/sh -e
+#!/bin/bash -e
 
 # This script checks out the git repos needed to build the engine.
 # These are:
