@@ -30,6 +30,10 @@ jobs:
         with:
           credentials_json: ${{ secrets.GCP_SA }}
 
+      # Install gcloud, `setup-gcloud` automatically picks up authentication from `auth`.
+      - name: 'Set up Cloud SDK'
+        uses: 'google-github-actions/setup-gcloud@v1'
+
       - name: Checkout Engine
         run: ./build_engine/checkout.sh ~/.engine_checkout
         shell: bash
