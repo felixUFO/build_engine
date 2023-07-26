@@ -16,12 +16,10 @@ cd $ENGINE_SRC
 # See https://github.com/flutter/engine/blob/e590b24f3962fda3ec9144dcee3f7565b195839a/ci/builders/windows_android_aot_engine.json
 
 
-# I haven't been able to get the right bits of VS2022 installed to build this.
+# If this gives you trouble, try using VS2019 instead.  I had trouble with 2022.
 # Android arm64 release
-# FileNotFoundError: [Errno 2] No such file or directory:
-# 'C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Redist\\MSVC\\14.36.32532\\arm64\\Microsoft.VC142.CRT\\msvcp140.dll'
-# ./flutter/tools/gn --android --android-cpu=arm64 --runtime-mode=release --no-goma
-# ninja -C ./out/android_release_arm64 gen_snapshot archive_win_gen_snapshot
+./flutter/tools/gn --android --android-cpu=arm64 --runtime-mode=release --no-goma
+ninja -C ./out/android_release_arm64 archive_win_gen_snapshot
 
 # Android arm32 release
 ./flutter/tools/gn --runtime-mode=release --android --no-goma

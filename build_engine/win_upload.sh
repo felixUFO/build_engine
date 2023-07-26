@@ -26,10 +26,10 @@ INFRA_ROOT="gs://$STORAGE_BUCKET/flutter_infra_release/flutter/$ENGINE_HASH"
 export PATH="$PATH:/c/Users/micro/AppData/Local/cloud-code/installer/google-cloud-sdk/bin"
 
 # Android Arm64 release gen_snapshot
-# ARCH_OUT=$ENGINE_OUT/android_release_arm64
-# ZIPS_OUT=$ARCH_OUT/zip_archives/android-arm64-release
-# ZIPS_DEST=$INFRA_ROOT/android-arm64-release
-# gsutil cp $ZIPS_OUT/$HOST_ARCH.zip $ZIPS_DEST/$HOST_ARCH.zip
+ARCH_OUT=$ENGINE_OUT/android_release_arm64
+ZIPS_OUT=$ARCH_OUT/zip_archives/android-arm64-release
+ZIPS_DEST=$INFRA_ROOT/android-arm64-release
+gsutil cp $ZIPS_OUT/$HOST_ARCH.zip $ZIPS_DEST/$HOST_ARCH.zip
 
 # Android Arm32 release gen_snapshot
 ARCH_OUT=$ENGINE_OUT/android_release
