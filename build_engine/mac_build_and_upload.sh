@@ -1,7 +1,7 @@
 #!/bin/sh -e
 
 # Usage:
-# ./build_and_upload.sh engine_path engine_hash
+# ./mac_build_and_upload.sh engine_path engine_hash
 
 # The path to the Flutter engine.
 ENGINE_ROOT=$1
@@ -18,7 +18,7 @@ cd $SCRIPT_DIR
 ./update.sh $ENGINE_ROOT $ENGINE_HASH
 
 # Then run the build (this should just be a ninja call).
-./build.sh $ENGINE_ROOT
+./mac_build.sh $ENGINE_ROOT
 
 # Copy Shorebird engine artifacts to Google Cloud Storage.
-./upload.sh $ENGINE_ROOT $ENGINE_HASH
+./mac_upload.sh $ENGINE_ROOT $ENGINE_HASH

@@ -1,7 +1,7 @@
 #!/bin/sh -e
 
 # Usage:
-# ./win_build.sh engine_path
+# ./linux_build.sh engine_path
 
 ENGINE_ROOT=$1
 

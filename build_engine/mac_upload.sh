@@ -1,7 +1,7 @@
 #!/bin/sh -e
 
 # Usage:
-# ./upload.sh engine_path git_hash
+# ./mac_upload.sh engine_path git_hash
 ENGINE_ROOT=$1
 ENGINE_HASH=$2
 
