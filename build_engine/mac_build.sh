@@ -5,7 +5,7 @@
 # I haven't investigated how to build rust from GN with the Android NDK yet.
 
 # Usage:
-# ./build.sh engine_path
+# ./mac_build.sh engine_path
 
 ENGINE_ROOT=$1
 
