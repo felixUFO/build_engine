@@ -13,6 +13,7 @@ ENGINE_HASH=$2
 # rebase the engine repo. So we do it manually.
 # Similar to https://bugs.chromium.org/p/chromium/issues/detail?id=584742
 cd $ENGINE_ROOT/src/flutter
+git fetch
 git checkout $ENGINE_HASH
 
 cd $ENGINE_ROOT
