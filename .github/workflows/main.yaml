@@ -21,16 +21,17 @@ jobs:
       contents: "read"
       id-token: "write"
 
-    runs-on: [self-hosted, "${{ github.event.inputs.operating_system }}"]
+    runs-on: ${{ github.event.inputs.operating_system }}
 
     steps:
       - name: 📚 Git Checkout
         uses: actions/checkout@v3
 
-      # Runner doesn't have permissions to sudo.
-      # - name: Install packages
-      #   run: ./build_engine/linux_setup.sh
-      #   shell: bash
+      - name: 🐍 Setup Python
+        if: ${{ github.event.inputs.operating_system == 'Windows' }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.9.6
 
       - id: auth
         name: Authenticate to Google Cloud
@@ -46,17 +47,17 @@ jobs:
         run: ./build_engine/checkout.sh ~/.engine_checkout
         shell: bash
 
-      - name: 🏗️ Build & Upload Engine (${{ github.event.inputs.operating_system }})
-        if: ${{ github.event.inputs.operating_system == 'linux' }}
+      - name: 🏗️ Build & Upload Engine (Linux)
+        if: ${{ github.event.inputs.operating_system == 'Linux' }}
         run: ./build_engine/linux_build_and_upload.sh ~/.engine_checkout/engine ${{ inputs.engine_revision }}
         shell: bash
 
-      - name: 🏗️ Build & Upload Engine (${{ github.event.inputs.operating_system }})
-        if: ${{ github.event.inputs.operating_system == 'macos' }}
+      - name: 🏗️ Build & Upload Engine (MacOS)
+        if: ${{ github.event.inputs.operating_system == 'MacOS' }}
         run: ./build_engine/mac_build_and_upload.sh ~/.engine_checkout/engine ${{ inputs.engine_revision }}
         shell: bash
 
-      - name: 🏗️ Build & Upload Engine (${{ github.event.inputs.operating_system }})
-        if: ${{ github.event.inputs.operating_system == 'windows' }}
+      - name: 🏗️ Build & Upload Engine (Windows)
+        if: ${{ github.event.inputs.operating_system == 'Windows' }}
         run: ./build_engine/win_build_and_upload.sh ~/.engine_checkout/engine ${{ inputs.engine_revision }}
         shell: powershell
