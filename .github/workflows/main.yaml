@@ -60,4 +60,4 @@ jobs:
       - name: 🏗️ Build & Upload Engine (Windows)
         if: ${{ github.event.inputs.operating_system == 'Windows' }}
         run: ./build_engine/win_build_and_upload.sh ~/.engine_checkout/engine ${{ inputs.engine_revision }}
-        shell: powershell
+        shell: bash
