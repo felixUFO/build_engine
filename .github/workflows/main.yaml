@@ -6,6 +6,14 @@ on:
       engine_revision:
         description: "The Engine revision to build and upload"
         required: true
+      operating_system:
+        description: "The operating system used to build the engine"
+        required: true
+        default: "linux"
+        options:
+          - "linux"
+          - "macos"
+          - "windows"
 
 jobs:
   build_and_upload:
@@ -13,7 +21,7 @@ jobs:
       contents: "read"
       id-token: "write"
 
-    runs-on: self-hosted
+    runs-on: [self-hosted, "${{ github.event.inputs.operating_system }}"]
 
     steps:
       - name: 📚 Git Checkout
@@ -31,13 +39,24 @@ jobs:
           credentials_json: ${{ secrets.GCP_SA }}
 
       # Install gcloud, `setup-gcloud` automatically picks up authentication from `auth`.
-      - name: 'Set up Cloud SDK'
-        uses: 'google-github-actions/setup-gcloud@v1'
+      - name: "Set up Cloud SDK"
+        uses: "google-github-actions/setup-gcloud@v1"
 
       - name: Checkout Engine
         run: ./build_engine/checkout.sh ~/.engine_checkout
         shell: bash
 
       - name: 🏗️ Build & Upload Engine
+        if: ${{ github.event.inputs.operating_system == 'linux' }}
         run: ./build_engine/linux_build_and_upload.sh ~/.engine_checkout/engine ${{ inputs.engine_revision }}
         shell: bash
+
+      - name: 🏗️ Build & Upload Engine
+        if: ${{ github.event.inputs.operating_system == 'macos' }}
+        run: ./build_engine/mac_build_and_upload.sh ~/.engine_checkout/engine ${{ inputs.engine_revision }}
+        shell: bash
+
+      - name: 🏗️ Build & Upload Engine
+        if: ${{ github.event.inputs.operating_system == 'windows' }}
+        run: ./build_engine/win_build_and_upload.sh ~/.engine_checkout/engine ${{ inputs.engine_revision }}
+        shell: powershell
