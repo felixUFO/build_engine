@@ -9,11 +9,11 @@ on:
       operating_system:
         description: "The operating system used to build the engine"
         required: true
-        default: "linux"
+        default: "Linux"
         options:
-          - "linux"
-          - "macos"
-          - "windows"
+          - "Linux"
+          - "MacOS"
+          - "Windows"
 
 jobs:
   build_and_upload:
@@ -46,17 +46,17 @@ jobs:
         run: ./build_engine/checkout.sh ~/.engine_checkout
         shell: bash
 
-      - name: 🏗️ Build & Upload Engine
+      - name: 🏗️ Build & Upload Engine (${{ github.event.inputs.operating_system }})
         if: ${{ github.event.inputs.operating_system == 'linux' }}
         run: ./build_engine/linux_build_and_upload.sh ~/.engine_checkout/engine ${{ inputs.engine_revision }}
         shell: bash
 
-      - name: 🏗️ Build & Upload Engine
+      - name: 🏗️ Build & Upload Engine (${{ github.event.inputs.operating_system }})
         if: ${{ github.event.inputs.operating_system == 'macos' }}
         run: ./build_engine/mac_build_and_upload.sh ~/.engine_checkout/engine ${{ inputs.engine_revision }}
         shell: bash
 
-      - name: 🏗️ Build & Upload Engine
+      - name: 🏗️ Build & Upload Engine (${{ github.event.inputs.operating_system }})
         if: ${{ github.event.inputs.operating_system == 'windows' }}
         run: ./build_engine/win_build_and_upload.sh ~/.engine_checkout/engine ${{ inputs.engine_revision }}
         shell: powershell
