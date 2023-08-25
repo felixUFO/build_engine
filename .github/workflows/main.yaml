@@ -43,9 +43,15 @@ jobs:
       - name: "Set up Cloud SDK"
         uses: "google-github-actions/setup-gcloud@v1"
 
-      - name: Checkout Engine
+      - name: Checkout Engine (Linux/MacOS)
+        if: ${{ github.event.inputs.operating_system == 'Linux' || github.event.inputs.operating_system == 'MacOS' }}
         run: ./build_engine/checkout.sh ~/.engine_checkout
         shell: bash
+
+      - name: Checkout Engine (Windows)
+        if: ${{ github.event.inputs.operating_system == 'Windows' }}
+        run: ./build_engine/checkout.ps1 ~/.engine_checkout
+        shell: powershell
 
       - name: 🏗️ Build & Upload Engine (Linux)
         if: ${{ github.event.inputs.operating_system == 'Linux' }}
@@ -59,5 +65,5 @@ jobs:
 
       - name: 🏗️ Build & Upload Engine (Windows)
         if: ${{ github.event.inputs.operating_system == 'Windows' }}
-        run: ./build_engine/win_build_and_upload.sh ~/.engine_checkout/engine ${{ inputs.engine_revision }}
-        shell: bash
+        run: ./build_engine/win_build_and_upload.ps1 ~/.engine_checkout/engine ${{ inputs.engine_revision }}
+        shell: powershell
