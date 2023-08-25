@@ -17,6 +17,9 @@ on:
 
 jobs:
   build_and_upload:
+    env:
+      DEPOT_TOOLS_WIN_TOOLCHAIN: 0
+
     permissions:
       contents: "read"
       id-token: "write"

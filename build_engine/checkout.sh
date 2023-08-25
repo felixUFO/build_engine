@@ -54,10 +54,6 @@ check_out_flutter_fork() {
     git fetch upstream
 }
 
-gclient_sync() {
-  DEPOT_TOOLS_WIN_TOOLCHAIN=0 gclient sync
-}
-
 check_out_engine() {
     cd $CHECKOUT_ROOT
     if [[ ! -d "engine" ]]; then
@@ -66,7 +62,7 @@ check_out_engine() {
 
     cd engine
     curl https://raw.githubusercontent.com/shorebirdtech/build_engine/main/build_engine/dot_gclient >.gclient
-    gclient_sync
+    gclient sync
 
     cd src/flutter
     if [[ ! $(git config --get remote.upstream.url) ]]; then
@@ -76,7 +72,7 @@ check_out_engine() {
     git checkout shorebird/dev
 
     cd $CHECKOUT_ROOT/engine
-    gclient_sync
+    gclient sync
 }
 
 check_out_depot_tools
