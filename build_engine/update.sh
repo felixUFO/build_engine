@@ -17,7 +17,7 @@ git fetch
 git checkout $ENGINE_HASH
 
 cd $ENGINE_ROOT
-gclient sync
+DEPOT_TOOLS_WIN_TOOLCHAIN=0 gclient sync
 
 # Update Dart and the engine to make sure we have all the tags from upstream.
 # The version number in the builds seems to depend on these tags?
