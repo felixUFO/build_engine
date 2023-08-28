@@ -12,7 +12,7 @@ on:
         default: "Linux"
         options:
           - "Linux"
-          - "macos-latest-xl"
+          - "MacOS"
           - "Windows"
 
 jobs:
