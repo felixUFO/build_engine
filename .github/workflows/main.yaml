@@ -19,6 +19,7 @@ jobs:
   build_and_upload:
     env:
       DEPOT_TOOLS_WIN_TOOLCHAIN: 0
+      GYP_MSVS_OVERRIDE_PATH: C:\Program Files\Microsoft Visual Studio\2022\Community
 
     permissions:
       contents: "read"
@@ -28,7 +29,7 @@ jobs:
 
     steps:
       - name: 📚 Git Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
 
       - name: 🐍 Setup Python
         if: ${{ github.event.inputs.operating_system == 'Windows' }}
